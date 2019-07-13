@@ -11,6 +11,7 @@ class NavComponent extends Component {
       };
 
       this.searchBoxChange = this.searchBoxChange.bind(this)
+      this.searchBoxKeypress = this.searchBoxKeypress.bind(this)
    }
 
   render(){
@@ -30,9 +31,7 @@ class NavComponent extends Component {
             </div>
 
             <div id="navbarBasicExample" className="navbar-menu">
-              <div className="navbar-start">
-                
-              </div>
+              <div className="navbar-start"></div>
 
               <div className="navbar-end">
                 <div className="navbar-item">
@@ -41,7 +40,7 @@ class NavComponent extends Component {
                     <p className="control">
                       <button
                         className="button is-light"
-                        onClick={()=>this.props.searchSubmitted(this.state.searchText)}>
+                        onClick={this.searchSubmitPressed}>
                           Search
                       </button>
                     </p>
@@ -50,7 +49,8 @@ class NavComponent extends Component {
                         className="input" 
                         type="text" 
                         placeholder="Block height" 
-                        onChange={this.searchBoxChange} />
+                        onChange={this.searchBoxChange} 
+                        onKeyDown={this.searchBoxKeypress} />
                     </div>
                   </div>
 
@@ -62,8 +62,18 @@ class NavComponent extends Component {
     )
   }
 
+  searchBoxKeypress(e){
+    if(e.keyCode == 13){
+      this.props.searchSubmitted(this.state.searchText)
+    }
+  }
+
   searchBoxChange(e){
     this.setState({searchText: e.target.value})
+  }
+
+  searchSubmitPressed(){
+    this.props.searchSubmitted(this.state.searchText)
   }
 
   componentDidMount(){
