@@ -23,13 +23,6 @@ class App extends Component{
         <section className="section">
           <div className="container">
 
-              <h1 className="title">
-                Bulma working
-              </h1>
-              <p className="subtitle">
-                looks nice
-              </p>
-
               <BlockListComponent
                 data_url={this.state.data_url}>
               </BlockListComponent>

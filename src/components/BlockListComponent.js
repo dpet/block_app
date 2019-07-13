@@ -8,13 +8,27 @@ class BlockListComponent extends Component {
 	    super(props);
 
 	    this.state = {
-	      recentBlocks: [],
+	      recent: [],
 	    };
 	 }
 
   	render(){
     	return(
-    		<div>sup</div>
+    		<div>
+    			<h1 className="title is-size-2">Recent Blocks</h1>
+
+	    		<table className="table is-narrow is-bordered is-fullwidth" >
+	    			<thead>
+	    				<th>Height</th>
+	    				<th>Size</th>
+	    				<th>Time</th>
+	    				<th>TRansactions</th>
+	    			</thead>
+	    			<tbody>
+	    				{this.generateJsx()}
+	    			</tbody>
+	    		</table>
+    		</div>
     	)
 	}
 
@@ -23,16 +37,19 @@ class BlockListComponent extends Component {
 	}
 
 	generateJsx(){
-
+		let { recent } = this.state
 		let jsx = []
 
-		jsx.push(
-            <tr>
-                <td>hi</td>
-            </tr>
-        )
-
-		jsx = <table className="table is-narrow is-bordered is-fullwidth" ><tbody>{jsx}</tbody></table>
+		recent.forEach((block)=>{
+			jsx.push(
+	            <tr key={block.id}>
+	                <td>{block.height}</td>
+	                <td>{block.size}</td>
+	                <td>{block.timestamp}</td>
+	                <td>{block.tx_count}</td>
+	            </tr>
+	        )
+		})
 
 		return jsx
 	}
@@ -42,8 +59,8 @@ class BlockListComponent extends Component {
 
 	    Axios.get(data_url+'blocks')
 	    .then(response => {
-	    	console.log(response)
-	    	this.setState({recentBlocks: response.data})
+	    	console.log(response.data)
+	    	this.setState({recent: response.data})
 	    })
 	    .catch(e => {
 	      console.log(e);
