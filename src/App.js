@@ -31,14 +31,20 @@ class App extends Component{
         <section className="section">
           <div className="container">
 
-            <BlockComponent
-              block={block}>
-            </BlockComponent>
+            <div className="columns">
+              <div className="column is-half">
+                <BlockListComponent
+                  data_url={data_url}
+                  blockSelected={this.blockSelected}>
+                </BlockListComponent>
+              </div>
 
-            <BlockListComponent
-              data_url={data_url}
-              blockSelected={this.blockSelected}>
-            </BlockListComponent>
+              <div className="column is-half">
+                <BlockComponent
+                  block={block}>
+                </BlockComponent>
+              </div>
+            </div>
           
           </div>
         </section>
