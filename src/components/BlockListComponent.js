@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react';
 import Axios from "axios";
+import moment from 'moment';
 
 class BlockListComponent extends Component {
 
@@ -19,13 +20,15 @@ class BlockListComponent extends Component {
 
 	    		<table className="table is-narrow is-bordered is-fullwidth" >
 	    			<thead>
-	    				<th>Height</th>
-	    				<th>Size</th>
-	    				<th>Time</th>
-	    				<th>TRansactions</th>
+	    				<tr>
+		    				<th>Height</th>
+		    				<th>Size</th>
+		    				<th>Time</th>
+		    				<th>Transactions</th>
+	    				</tr>
 	    			</thead>
 	    			<tbody>
-	    				{this.generateJsx()}
+	    				{this.rowsJsx()}
 	    			</tbody>
 	    		</table>
     		</div>
@@ -36,16 +39,19 @@ class BlockListComponent extends Component {
 		this.getRecentBlocks()
 	}
 
-	generateJsx(){
+	rowsJsx(){
 		let { recent } = this.state
 		let jsx = []
 
 		recent.forEach((block)=>{
+			let ts = moment.unix(block.timestamp);
+			let time = ts.format('h:mm a')
+
 			jsx.push(
 	            <tr key={block.id}>
-	                <td>{block.height}</td>
+	                <td><a href="">{block.height}</a></td>
 	                <td>{block.size}</td>
-	                <td>{block.timestamp}</td>
+	                <td>{time}</td>
 	                <td>{block.tx_count}</td>
 	            </tr>
 	        )
