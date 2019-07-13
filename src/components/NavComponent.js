@@ -25,11 +25,16 @@ class NavComponent extends Component {
 
               <div className="navbar-end">
                 <div className="navbar-item">
-                  <div className="field">
+
+                  <div className="field is-grouped">
+                    <p className="control">
+                      <a className="button is-light">Search</a>
+                    </p>
                     <div className="control">
-                      <input className="input" type="text" placeholder="Search" />
+                      <input className="input" type="text" placeholder="Block height" />
                     </div>
                   </div>
+
                 </div>
               </div>
             </div>

@@ -41,6 +41,7 @@ class BlockListComponent extends Component {
 
 	rowsJsx(){
 		let { recent } = this.state
+		let { blockSelected } = this.props
 		let jsx = []
 
 		recent.forEach((block)=>{
@@ -49,7 +50,11 @@ class BlockListComponent extends Component {
 
 			jsx.push(
 	            <tr key={block.id}>
-	                <td><a href="">{block.height}</a></td>
+	                <td>
+	                	<a href="#" 
+	                		onClick={()=>blockSelected(block.height)}>{block.height}
+	                	</a>
+	                </td>
 	                <td>{block.size}</td>
 	                <td>{time}</td>
 	                <td>{block.tx_count}</td>
