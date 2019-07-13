@@ -10,11 +10,9 @@ class App extends Component{
   constructor(props) {
       super(props);
 
-      // https://blockchain.info/blocks/$time_in_milliseconds?format=json
-
       this.state = {
-        data_url: 'https://blockchain.info/blocks/'
-      };
+        data_url: 'https://blockstream.info/api/'
+      }
    }
 
   render(){
@@ -33,7 +31,7 @@ class App extends Component{
               </p>
 
               <BlockListComponent
-                data_url="data_url">
+                data_url={this.state.data_url}>
               </BlockListComponent>
           
           </div>
