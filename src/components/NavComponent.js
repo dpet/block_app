@@ -12,6 +12,7 @@ class NavComponent extends Component {
 
       this.searchBoxChange = this.searchBoxChange.bind(this)
       this.searchBoxKeypress = this.searchBoxKeypress.bind(this)
+      this.searchSubmitPressed = this.searchSubmitPressed.bind(this)
    }
 
   render(){

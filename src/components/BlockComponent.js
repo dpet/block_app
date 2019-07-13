@@ -49,7 +49,7 @@ function BlockComponent(props) {
 		)
 	}
 
-	return null	
+	return <div className="has-text-centered has-text-grey is-size-3"><h2>No block available</h2></div>
 }
 
 export default BlockComponent;

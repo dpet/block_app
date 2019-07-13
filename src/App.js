@@ -35,7 +35,8 @@ class App extends Component{
           <div className="container">
 
             <div className="columns">
-              <div className="column is-half">
+
+              <div className="column">
                 <BlockListComponent
                   data_url={data_url}
                   blockSelected={this.blockSelected}>
@@ -47,8 +48,8 @@ class App extends Component{
                   block={block}>
                 </BlockComponent>
               </div>
+
             </div>
-          
           </div>
         </section>
 
@@ -64,15 +65,11 @@ class App extends Component{
     this.getBlockTx(height)
   }
 
-
-  //GET /block-height/:height
-
   getBlockTx(height){
       let { data_url } = this.state;
 
       Axios.get(data_url+'block-height/'+height)
       .then(response => {
-        console.log(response.data)
         this.getBlock(response.data)
       })
       .catch(e => {
@@ -86,7 +83,6 @@ class App extends Component{
 
       Axios.get(data_url+'block/'+tx)
       .then(response => {
-        console.log(response.data)
         this.getBlockTransactions(response.data, tx)        
       })
       .catch(e => {
@@ -95,7 +91,6 @@ class App extends Component{
       });
    }
 
-   // /block/:hash/txs[/:start_index]
    getBlockTransactions(block, tx){
       let { data_url } = this.state;
 
