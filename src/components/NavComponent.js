@@ -2,6 +2,17 @@
 import React, { Component } from 'react';
 
 class NavComponent extends Component {
+
+  constructor(props) {
+      super(props);
+
+      this.state = {
+        searchText: '',
+      };
+
+      this.searchBoxChange = this.searchBoxChange.bind(this)
+   }
+
   render(){
     return(
         <nav className="navbar is-primary" role="navigation" aria-label="main navigation">
@@ -28,10 +39,18 @@ class NavComponent extends Component {
 
                   <div className="field is-grouped">
                     <p className="control">
-                      <a className="button is-light">Search</a>
+                      <button
+                        className="button is-light"
+                        onClick={()=>this.props.searchSubmitted(this.state.searchText)}>
+                          Search
+                      </button>
                     </p>
                     <div className="control">
-                      <input className="input" type="text" placeholder="Block height" />
+                      <input 
+                        className="input" 
+                        type="text" 
+                        placeholder="Block height" 
+                        onChange={this.searchBoxChange} />
                     </div>
                   </div>
 
@@ -41,6 +60,10 @@ class NavComponent extends Component {
           </div>
         </nav>
     )
+  }
+
+  searchBoxChange(e){
+    this.setState({searchText: e.target.value})
   }
 
   componentDidMount(){

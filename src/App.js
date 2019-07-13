@@ -19,6 +19,7 @@ class App extends Component{
       }
 
       this.blockSelected = this.blockSelected.bind(this)
+      this.searchSubmitted = this.searchSubmitted.bind(this)
    }
 
   render(){
@@ -26,7 +27,9 @@ class App extends Component{
 
     return (
       <div>
-        <NavComponent></NavComponent>
+        <NavComponent
+          searchSubmitted={this.searchSubmitted}>
+        </NavComponent>
 
         <section className="section">
           <div className="container">
@@ -54,6 +57,10 @@ class App extends Component{
   }
 
   blockSelected(height){
+    this.getBlockTx(height)
+  }
+
+  searchSubmitted(height){
     this.getBlockTx(height)
   }
 
