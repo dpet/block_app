@@ -1,30 +1,47 @@
-import React from 'react';
+import React, { Component, Fragment } from "react";
 import './App.css';
 
 import Bulma from 'bulma';
 import NavComponent from "./components/NavComponent.js";
+import BlockListComponent from "./components/BlockListComponent.js";
 
 
-function App() {
-  return (
-    <div>
-      <NavComponent></NavComponent>
+class App extends Component{
+  constructor(props) {
+      super(props);
 
-      <section class="section">
-        <div class="container">
+      // https://blockchain.info/blocks/$time_in_milliseconds?format=json
 
-            <h1 class="title">
-              Bulma working
-            </h1>
-            <p class="subtitle">
-              looks nice
-            </p>
-        
-        </div>
-      </section>
+      this.state = {
+        data_url: 'https://blockchain.info/blocks/'
+      };
+   }
 
-    </div>
-  );
+  render(){
+    return (
+      <div>
+        <NavComponent></NavComponent>
+
+        <section className="section">
+          <div className="container">
+
+              <h1 className="title">
+                Bulma working
+              </h1>
+              <p className="subtitle">
+                looks nice
+              </p>
+
+              <BlockListComponent
+                data_url="data_url">
+              </BlockListComponent>
+          
+          </div>
+        </section>
+
+      </div>
+    )
+  }
 }
 
-export default App;
+export default App; 

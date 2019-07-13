@@ -4,28 +4,32 @@ import React, { Component } from 'react';
 class NavComponent extends Component {
   render(){
     return(
-        <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
-          <div class="container">
-            <div class="navbar-brand">
-              <a class="navbar-item" href="/">
-                <span class="is-size-2">Blocko</span>
+        <nav className="navbar is-primary" role="navigation" aria-label="main navigation">
+          <div className="container">
+            <div className="navbar-brand">
+              <a className="navbar-item" href="/">
+                <span className="is-size-2">Blocko</span>
               </a>
 
-              <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+              <a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
               </a>
             </div>
 
-            <div id="navbarBasicExample" class="navbar-menu">
-              <div class="navbar-start">
+            <div id="navbarBasicExample" className="navbar-menu">
+              <div className="navbar-start">
                 
               </div>
 
-              <div class="navbar-end">
-                <div class="navbar-item">
-                
+              <div className="navbar-end">
+                <div className="navbar-item">
+                  <div className="field">
+                    <div className="control">
+                      <input className="input" type="text" placeholder="Search" />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
